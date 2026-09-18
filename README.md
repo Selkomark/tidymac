@@ -6,6 +6,19 @@ Time Machine local snapshots.
 
 ## Install
 
+Without cloning:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Selkomark/tidymac/main/remote-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Selkomark/tidymac/main/remote-install.sh | bash -s -- --hour 3 --minute 30
+```
+
+`remote-install.sh` just downloads `tidymac.sh`, `install.sh`, and the plist
+template to a temp dir and runs `install.sh` — read it before piping it to
+`bash` if you want to check what it does first.
+
+From a clone:
+
 ```bash
 chmod +x install.sh
 ./install.sh                    # daily at 10:00
