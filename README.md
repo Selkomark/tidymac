@@ -10,7 +10,7 @@ Without cloning:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Selkomark/tidymac/main/remote-install.sh | bash
-curl -fsSL https://raw.githubusercontent.com/Selkomark/tidymac/main/remote-install.sh | bash -s -- --hour 3 --minute 30
+curl -fsSL https://raw.githubusercontent.com/Selkomark/tidymac/main/remote-install.sh | bash -s -- --schedule weekly
 ```
 
 `remote-install.sh` just downloads `tidymac.sh`, `install.sh`, and the plist
@@ -21,11 +21,16 @@ From a clone:
 
 ```bash
 chmod +x install.sh
-./install.sh                    # daily at 10:00
-./install.sh --hour 3 --minute 30
-./install.sh --sudo             # also lets tmutil run unattended (adds a sudoers rule)
+./install.sh                                          # daily at 10:00 (default)
+./install.sh --schedule daily   --hour 3 --minute 30   # daily at a custom time
+./install.sh --schedule weekly  --weekday 0 --hour 10  # weekly, 0=Sunday..6=Saturday (default Sunday)
+./install.sh --schedule every6h                        # every 6 hours, starting from install time
+./install.sh --schedule every3h                        # every 3 hours, starting from install time
+./install.sh --sudo                                    # also lets tmutil run unattended (adds a sudoers rule)
 ```
 
+`--hour`/`--minute`/`--weekday` are ignored for `every3h`/`every6h` — those
+run on a fixed interval (launchd's `StartInterval`), not at a clock time.
 Re-running `install.sh` updates the script/schedule in place.
 
 ## Use
