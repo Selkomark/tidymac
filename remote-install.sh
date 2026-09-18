@@ -13,3 +13,6 @@ done
 chmod +x "$TMP/tidymac.sh" "$TMP/install.sh"
 
 "$TMP/install.sh" "$@"
+
+echo "(the Uninstall path above won't exist after this script exits — to uninstall, run:"
+echo "  curl -fsSL $REPO_RAW/uninstall.sh | bash)"

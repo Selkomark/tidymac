@@ -43,4 +43,6 @@ scheduled time, launchd runs the job at next wake.
 
 ```bash
 ./uninstall.sh
+# or, without a clone:
+curl -fsSL https://raw.githubusercontent.com/Selkomark/tidymac/main/uninstall.sh | bash
 ```
